@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
-
+    <div x-data="menu()" x-init="handleResize()" @resize.window="handleResize()">
     <!-- Navbar -->
     <nav class="nav-gradient text-white p-4">
         <div class="container px-12 flex justify-between items-center">
@@ -37,15 +37,15 @@
                     </svg>
                 </button>
             </div>
-            <div class="md:hidden">
+            <div  @click="open = !open" class="md:hidden">
                 <img src="{{ asset('icons/nav_menu.svg') }}" alt="Menu" class="h-6 w-6">
             </div>
         </div>
     </nav>
     <!-- Secondary navigation below main navbar -->
-    <nav class="hidden md:flex bg-navIndigo text-white px-4">
-        <div class="container px-12">
-            <ul class="flex space-x-6 text-sm md:text-base font-medium">
+    <nav class="bg-navIndigo text-white px-4">
+        <div :class="{ 'block': open, 'hidden': !open }" class="container px-12">
+            <ul class="flex flex-col md:flex-row space-x-6 text-sm md:text-base font-medium">
                 <li>
                     <a href="#" class="relative py-3 inline-flex items-center whitespace-nowrap group">
                         <span class="relative">
@@ -101,7 +101,6 @@
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="#" class="relative py-3 inline-flex items-center whitespace-nowrap group">
                         <span class="relative">
@@ -121,6 +120,7 @@
             </ul>
         </div>
     </nav>
+    </div>
     <!-- Main content -->
     <main class="flex-grow container mx-auto px-4 py-6">
         @yield('content')
