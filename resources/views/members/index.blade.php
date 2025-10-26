@@ -1,6 +1,4 @@
-@extends('layout.app')
-
-@section('content')
+<x-app-layout>
 <section class="gradient-section lg:py-12 m-0">
     <div class="lg:px-8">
 
@@ -130,17 +128,32 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                 <tr>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
                     <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                        Name
+                        No
                     </p>
                     </th>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
                     <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                        Job
+                        Certified Date
                     </p>
                     </th>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
                     <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                        Employed
+                        Company
+                    </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        POS Brand
+                    </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        Model
+                    </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        Country
                     </p>
                     </th>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
@@ -149,109 +162,43 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="even:bg-blue-gray-50/50">
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        John Michael
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Manager
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        23/04/18
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="even:bg-blue-gray-50/50">
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Alexa Liras
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Developer
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        23/04/18
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="even:bg-blue-gray-50/50">
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Laurent Perrier
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Executive
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        19/09/17
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="even:bg-blue-gray-50/50">
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Michael Levi
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Developer
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        24/12/08
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="even:bg-blue-gray-50/50">
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Richard Gran
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        Manager
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                        04/10/21
-                    </p>
-                    </td>
-                    <td class="p-4">
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">Edit</a>
-                    </td>
-                </tr>
+                @foreach($members as $member)
+                    <tr class="even:bg-blue-gray-50/50">
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->id }}
+                            </p>
+                        </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->created_at->format('d/m/Y') }}
+                            </p>
+                        </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->user->name }}
+                            </p>
+                        </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->brand }}
+                            </p>
+                        </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->model }}
+                            </p>
+                        </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                {{ $member->country }}
+                            </p>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             </div>
     </div>
 </section>
-@endsection
+</x-app-layout>

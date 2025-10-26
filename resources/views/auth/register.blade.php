@@ -1,10 +1,23 @@
-<x-guest-layout>
+
+<x-app-layout>
+
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 gradient-bg">
+        <div>
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </div>
+
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-bgViolet shadow-md overflow-hidden sm:rounded-lg">
+            <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+    
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Company Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -49,4 +62,10 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+
+
+        </div>
+    </div>
+    
+</x-app-layout>
+

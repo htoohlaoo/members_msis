@@ -16,6 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        \Log::info('Is Subscribed: ' . (auth()->user()?->isSubscribed() ? 'yes':'no'));
         return view('profile.edit', [
             'user' => $request->user(),
         ]);

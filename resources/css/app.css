@@ -48,6 +48,17 @@
     min-height: 100vh;
     background-repeat:no-repeat;
 }
+.gradient-bg {
+    background: radial-gradient(
+        ellipse at center 50%,
+        rgb(187, 179, 205) 0%,
+        #beb3ce 20%,
+        var(--color-bgViolet) 70%,
+        var(--color-bgViolet) 100%
+    );
+    background-size: cover;
+    background-repeat:no-repeat;
+}
 
 .girl-bg {
     background: url("/images/logo.png")
