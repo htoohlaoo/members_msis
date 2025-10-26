@@ -119,8 +119,11 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
         </div>
     </div>
 </section>
+@if(auth()->check())
 <section class="gradient-section lg:py-12 m-0">
+    
     <div class="lg:px-8">
+        <h1 class="text-center text-3xl text-white font-bold mb-8">Member List</h1>
         <div
             class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
             <table class="w-full text-left table-auto min-w-max">
@@ -199,6 +202,13 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                 </tbody>
             </table>
             </div>
+            <!-- Pagination Links -->
+            <div class="mt-4">
+                {{ $members->links('pagination::tailwind') }}
+            </div>
+    
     </div>
-</section>
+    
+</section
+@endif
 </x-app-layout>

@@ -13,21 +13,14 @@ class MemberController extends Controller
 {
     //
     public function index(){
-        $members = collect(); // default empty collection
 
         if(auth()->check()) {
-            $members = Membership::where('status', 'active')->get();
-            \Log::info('Memberships: ' . $members->count());
-
-            if ($members->isEmpty()) {
-                \Log::info('No memberships found for user: ' . auth()->id());
-            } else {
-                \Log::info('Memberships found for user: ' . auth()->id() . ' - Count: ' . $members->count());
-            }
+        $members = Membership::where('status', 'active')->paginate(10);
         } else {
-            \Log::info('No user is authenticated.');
+            // Empty paginator for guests
+            $members = Membership::whereRaw('1 = 0')->paginate(10);
         }
-
+        
         // Pass memberships to the view
         return view('members.index', compact('members'));
     }
