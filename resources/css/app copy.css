@@ -1,15 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import 'tailwindcss';
+@theme {
+        --color-navBlue1: #588CD4;
+        --color-navBlue2: #B2CAEB;
+        --color-navBlue3: #588CD4;
+        --color-navBlue4: #8CB0E2;
+        --color-navIndigo:#2F18AA;
+        --color-footerVioletLight:#7C3AED4D;
+        --color-footerVioletDark:#7C3AED26;
+        --color-subBannerBg:#797497;
+        --color-bgViolet:#29205b;
+        --color-infoCardBg:#777295B3;
 
-
-:root {
-    --color-navBlue1: #1e40af;
-    --color-navBlue2: #3b82f6;
-    --color-navBlue3: #60a5fa;
-    --color-navBlue4: #93c5fd;
-    --color-bgViolet: #3c124e;
 }
+
+
 .nav-gradient {
     background: linear-gradient(
         to right,
@@ -51,4 +56,15 @@
 
 .girl-bg {
     background: url("/images/logo.png")
+}
+
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Roboto', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
 }

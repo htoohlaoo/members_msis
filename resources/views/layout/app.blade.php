@@ -11,7 +11,7 @@
     <div x-data="menu()" x-init="handleResize()" @resize.window="handleResize()">
     <!-- Navbar -->
     <nav class="nav-gradient text-white p-4">
-        <div class="container px-12 flex justify-between items-center">
+        <div class="container px-4 md:px-8 lg:px-12 flex justify-between items-center">
             <!-- Left: Logo -->
             <a href="/" class="flex items-center">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto">
@@ -20,7 +20,7 @@
             <!-- Right: Enroll, Language, Profile -->
             <div class="hidden md:flex items-center space-x-4">
                 <!-- Enroll Button -->
-                <a href="/enroll" class="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-full font-semibold transition">
+                <a href="/login" class="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-full font-semibold transition">
                     Enroll &rarr;
                 </a>
 
@@ -164,7 +164,7 @@
     </nav>
     </div>
     <!-- Main content -->
-    <main class="gradient-section flex-grow container px-4 py-6 ">
+    <main class="flex-grow w-full">
         @yield('content')
     </main>
 
