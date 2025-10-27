@@ -10,7 +10,7 @@ Route::get('/', [MemberController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified','role:user'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -20,10 +20,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth','role:user'])->group(function () {
+    Route::post('/member', [MemberController::class, 'subscribe'])->name('members.subscribe');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/member', [MemberController::class, 'create'])->name('members.create');
     Route::post('/member/byadmin', [MemberController::class, 'subscribeAndRegister'])->name('members.subscribeByAdmin');
-    Route::post('/member', [MemberController::class, 'subscribe'])->name('members.subscribe');
     Route::get('/members/{id}', [MemberController::class, 'edit'])->name('members.update');
     Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update');
     Route::delete('/members/{id}', [MemberController::class, 'dismiss'])->name('members.dismiss');

@@ -136,9 +136,11 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                         <option value="15" {{ request('perPage',10) == 15 ? 'selected' : '' }}>15</option>
                     </select>
                     <span class="text-white">entries</span>
+                    @if(auth()->user()->isAdmin())
                     <a href="{{ route('members.create') }}" class="ml-4 px-4 py-1 border border-gray-400 text-white hover:text-gray-500 rounded-md hover:bg-gray-100 transition inline-block">
                         New
                     </a>
+                    @endif
                 </div>
 
                 <!-- Right side: Status & Search -->
@@ -237,9 +239,11 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                         Country
                     </p>
                     </th>
+                    @if(auth()->user()->isAdmin() && request('status','active') == 'active')
                     <th class="p-4 border-b border-blue-gray-100 ">
-                    <p class="block font-sans text-sm antialiased  leading-none  "></p>
+                        <p class="block font-sans text-sm antialiased  leading-none  "></p>
                     </th>
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -275,6 +279,7 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                                 {{ $member->country }}
                             </p>
                         </td>
+                        @if(auth()->user()->isAdmin() && request('status','active') == 'active')
                         <td class="p-4">
                             <div class="flex gap-2 justify-end">
                                 <!-- Update -->
@@ -295,6 +300,7 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                                 </form>
                             </div>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

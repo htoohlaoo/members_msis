@@ -23,18 +23,21 @@ class MemberController extends Controller
             $search = $request->input('search');
 
             $members = Membership::where('status', $status)
-                ->when($search, function ($query, $search) {
-                    $query->where('brand', 'like', "%{$search}%")
-                        ->orWhere('country', 'like', "%{$search}%")
-                        ->orWhereHas('user', function ($q) use ($search) {
-                            $q->where('name', 'like', "%{$search}%");
-                        });
-                })
-                ->paginate($perPage)
-                ->appends([
-                    'perPage' => $perPage,
-                    'search' => $search
-                ]);
+                        ->when($search, function ($query, $search) {
+                            $query->where(function ($q) use ($search) {
+                                $q->where('brand', 'like', "%{$search}%")
+                                ->orWhere('country', 'like', "%{$search}%")
+                                ->orWhereHas('user', function ($q2) use ($search) {
+                                    $q2->where('name', 'like', "%{$search}%");
+                                });
+                            });
+                        })
+                        ->paginate($perPage)
+                        ->appends([
+                            'perPage' => $perPage,
+                            'search' => $search,
+                            'status' => $status,
+                        ]);
         } else {
             // Empty paginator for guests
             $perPage = $request->input('perPage', 10);
@@ -91,7 +94,7 @@ class MemberController extends Controller
             ]);
 
             // 👉 Auto login after registration
-            Auth::login($user);
+            //Auth::login($user);
 
             // ✅ Create Membership for newly registered user
             $member = Membership::create([
