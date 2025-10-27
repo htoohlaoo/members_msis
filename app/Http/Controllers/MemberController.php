@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\membership\MembershipRequest;
+use App\Http\Requests\membership\MembershipAdminRequest;
 use App\Models\Membership;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -73,6 +76,41 @@ class MemberController extends Controller
             return redirect()
                 ->back()                                                                                                                                                                                                                                                                                                                
                 ->with('error', 'Something went wrong. Please try again later.');
+        }
+    }
+
+    public function subscribeAndRegister(MembershipAdminRequest $request): RedirectResponse
+    {
+        try {
+            $validated = $request->validated();
+
+            // 👉 Create the user first
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+            ]);
+
+            // 👉 Auto login after registration
+            Auth::login($user);
+
+            // ✅ Create Membership for newly registered user
+            $member = Membership::create([
+                'user_id' => $user->id,
+                'brand' => $validated['brand'],
+                'model' => $validated['model'],
+                'country' => $validated['country'],
+                'status' => 'active'
+            ]);
+
+            return redirect()
+                ->back()
+                ->with('success', 'Account created & membership subscribed successfully!');
+
+        } catch (\Exception $e) {
+            \Log::error('Subscription failure: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Something went wrong, please try again.');
         }
     }
 

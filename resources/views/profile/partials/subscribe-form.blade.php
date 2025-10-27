@@ -22,7 +22,7 @@
     @endif
 
     <x-modal name="member-subscription" focusable>
-    <form method="POST" action="{{ route('membership.subscribe') }}" class="p-6">
+    <form method="POST" action="{{ route('members.subscribe') }}" class="p-6">
         @csrf
 
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">

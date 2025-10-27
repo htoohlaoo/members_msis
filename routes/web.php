@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/member', [MemberController::class, 'create'])->name('members.create');
+    Route::post('/member/byadmin', [MemberController::class, 'subscribeAndRegister'])->name('members.subscribeByAdmin');
     Route::post('/member', [MemberController::class, 'subscribe'])->name('members.subscribe');
 });
 
