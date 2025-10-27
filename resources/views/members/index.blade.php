@@ -136,6 +136,9 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                         <option value="15" {{ request('perPage',10) == 15 ? 'selected' : '' }}>15</option>
                     </select>
                     <span class="text-white">entries</span>
+                    <a href="{{ route('members.create') }}" class="ml-4 px-4 py-1 border border-gray-400 text-white hover:text-gray-500 rounded-md hover:bg-gray-100 transition inline-block">
+                        New
+                    </a>
                 </div>
 
                 <!-- Right side: Status & Search -->
@@ -144,8 +147,8 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                     <div class="flex items-center gap-2 text-sm font-medium">
                         <label for="status" class="text-white font-medium">Status</label>
                         <select name="status" id="status" onchange="this.form.submit()" class="px-2 py-1 w-[150px] rounded">
-                            <option value="active" {{ request('status','active') == 'active' ? 'selected' : '' }}>Subscribed</option>
-                            <option value="archived" {{ request('status','active') == 'archived' ? 'selected' : '' }}>Unsubscribed</option>
+                            <option value="active" {{ request('status','active') == 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="archived" {{ request('status','active') == 'archived' ? 'selected' : '' }}>Archived</option>
                         </select>
                     </div>
 
@@ -273,8 +276,24 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                             </p>
                         </td>
                         <td class="p-4">
-                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            </p>
+                            <div class="flex gap-2 justify-end">
+                                <!-- Update -->
+                                <a href="{{ route('members.update', $member->id) }}"
+                                class="px-3 py-1 border border-gray-400 text-white rounded-md hover:bg-gray-100 hover:text-gray-700 transition inline-block">
+                                    Update
+                                </a>
+
+                                <!-- Delete -->
+                                <form action="{{route('members.dismiss', $member->id)}}" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to archive this company?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="px-3 py-1 border border-gray-400 text-white rounded-md hover:bg-gray-100 hover:text-gray-700 transition">
+                                        Dismiss
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -283,7 +302,7 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
             </div>
             <!-- Pagination Links -->
             @if($members->total() > $members->perPage() || $members->total() > 0)
-                <div class="mt-4 pagination-light">
+                <div class="hidden sm:block mt-4 pagination-light">
                     {{ $members->links('pagination::custom') }}
                 </div>
             @endif

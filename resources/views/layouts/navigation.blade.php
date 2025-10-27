@@ -81,7 +81,10 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 mt-1 hidden group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm">
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
+                        x-show="open"
+                        x-transition
+                    >
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service1</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service2</a></li>
                     </ul>
@@ -108,7 +111,10 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 mt-1 hidden group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm">
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
+                        x-show="open"
+                        x-transition
+                    >
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo1</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo2</a></li>
                     </ul>
@@ -134,7 +140,10 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 mt-1 hidden group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm">
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
+                        x-show="open"
+                        x-transition
+                    >
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Team</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
                     </ul>

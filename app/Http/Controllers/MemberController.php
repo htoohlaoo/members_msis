@@ -27,8 +27,7 @@ class MemberController extends Controller
                     $query->where('brand', 'like', "%{$search}%")
                         ->orWhere('country', 'like', "%{$search}%")
                         ->orWhereHas('user', function ($q) use ($search) {
-                            $q->where('name', 'like', "%{$search}%")
-                                ->orWhere('email', 'like', "%{$search}%");
+                            $q->where('name', 'like', "%{$search}%");
                         });
                 })
                 ->paginate($perPage)
@@ -118,4 +117,70 @@ class MemberController extends Controller
     {
         return view('members.create');
     }
+
+    public function edit($id)
+    {
+        $member = Membership::findOrFail($id);
+        return view('members.update', compact('member'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'password' => 'nullable|string|min:6',
+                'brand' => 'required|string',
+                'model' => 'required|string',
+                'country' => 'required|string',
+            ]);
+
+            // Find the user & membership
+            $member = Membership::findOrFail($id);
+            $user = $member->user;
+            
+            // Update user info
+            $user->update([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => $validated['password'] ? Hash::make($validated['password']) : $user->password,
+            ]);
+            
+            // Update membership info
+            $member->update([
+                'brand' => $validated['brand'],
+                'model' => $validated['model'],
+                'country' => $validated['country'],
+            ]);
+            \Log::info('Member updated successfully: ' . $member->id);
+            return redirect()
+                ->back()
+                ->with('success', 'Member updated successfully!');
+
+        } catch (\Exception $e) {
+            \Log::error('Update failure: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Something went wrong, please try again.');
+        }
+    }
+
+    public function dismiss(){
+        try {
+            $member = Membership::findOrFail(request()->id);
+            $member->status = 'archived';
+            $member->save();
+
+            return redirect()
+                ->back()
+                ->with('success', 'Member dismissed successfully!');
+        } catch (\Exception $e) {
+            \Log::error('Dismiss failure: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Something went wrong, please try again.');
+        }
+    }
+
+
 }
