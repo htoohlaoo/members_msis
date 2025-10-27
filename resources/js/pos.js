@@ -6,7 +6,7 @@ export function posSelector(initBrand = '', initModel = '', initCountry = '') {
             'Brand B': ['Model B1', 'Model B2'],
             'Brand C': ['Model C1', 'Model C2'],
         },
-        countries: ['USA', 'UK', 'Japan','Thailand'],
+        countries: ['USA', 'UK', 'Japan','Thailand','Myanmar'],
 
         selectedBrand: initBrand,
         selectedModel: initModel,
