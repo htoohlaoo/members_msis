@@ -16,9 +16,10 @@ class MemberController extends Controller
     {
         if (auth()->check()) {
             $perPage = $request->input('perPage', 10);
+            $status = $request->input('status', 'active');
             $search = $request->input('search');
 
-            $members = Membership::where('status', 'active')
+            $members = Membership::where('status', $status)
                 ->when($search, function ($query, $search) {
                     $query->where('brand', 'like', "%{$search}%")
                         ->orWhere('country', 'like', "%{$search}%")

@@ -124,10 +124,9 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
     
     <div class="lg:px-8">
         <h1 class="text-center text-3xl text-white font-bold mb-8">Member List</h1>
-
         <form method="GET" action="{{ route('home') }}">
-            <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
-                <!-- Per Page Dropdown -->
+            <div class="flex flex-col sm:flex-row items-center mb-4 gap-4 w-full">
+                <!-- Left side: Per Page -->
                 <div class="flex items-center gap-2 text-sm font-medium">
                     <label for="perPage" class="text-white font-medium">Show</label>
                     <select name="perPage" id="perPage" onchange="this.form.submit()" class="px-2 py-1 w-[60px] rounded">
@@ -139,17 +138,29 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                     <span class="text-white">entries</span>
                 </div>
 
-                <!-- Search Input -->
-                <div class="flex items-center w-full sm:w-64 relative">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search Here"
-                        class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 pl-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm">
-                    
-                    <!-- Submit button -->
-                    <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
-                        </svg>
-                    </button>
+                <!-- Right side: Status & Search -->
+                <div class="flex items-center gap-4 ml-auto w-full sm:w-auto">
+                    <!-- Status Dropdown -->
+                    <div class="flex items-center gap-2 text-sm font-medium">
+                        <label for="status" class="text-white font-medium">Status</label>
+                        <select name="status" id="status" onchange="this.form.submit()" class="px-2 py-1 w-[150px] rounded">
+                            <option value="active" {{ request('status','active') == 'active' ? 'selected' : '' }}>Subscribed</option>
+                            <option value="archived" {{ request('status','active') == 'archived' ? 'selected' : '' }}>Unsubscribed</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="flex items-center w-full sm:w-64 relative">
+                        <input type="text" name="search" value="{{ request('search', '') }}" placeholder="Search Here"
+                            class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 pl-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm">
+                        
+                        <!-- Submit button -->
+                        <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
