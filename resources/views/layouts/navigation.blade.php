@@ -166,6 +166,28 @@
                         </span>
                     </a>
                 </li>
+
+                <li>
+                    @if(!Auth::check())
+                    <a href="/login" class="relative py-3 inline-flex items-center whitespace-nowrap group">
+                        <span class="relative">
+                            Login
+                            <span class="absolute left-0 bottom-0 w-1/2 border-b-2 border-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                        </span>
+                    </a>
+                    @else
+                    <form method="POST" action="{{ route('logout') }}" class="block sm:hidden">
+                        @csrf
+                        <button type="submit" 
+                            class="relative py-3 inline-flex items-center whitespace-nowrap group bg-transparent text-white font-medium">
+                            <span class="relative">
+                                Log Out
+                                <span class="absolute left-0 bottom-0 w-1/2 border-b-2 border-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                            </span>
+                        </button>
+                    </form>
+                    @endif
+                </li>
             </ul>
         </div>
     </nav>
