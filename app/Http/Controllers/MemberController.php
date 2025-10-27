@@ -12,13 +12,14 @@ use App\Models\Membership;
 class MemberController extends Controller
 {
     //
-    public function index(){
+    public function index(Request $request){
 
         if(auth()->check()) {
-        $members = Membership::where('status', 'active')->paginate(10);
+        $perPage = $request->input('perPage', 10);
+        $members = Membership::where('status', 'active')->paginate($perPage);
         } else {
             // Empty paginator for guests
-            $members = Membership::whereRaw('1 = 0')->paginate(10);
+            $members = Membership::whereRaw('1 = 0')->paginate($perPage);
         }
         
         // Pass memberships to the view

@@ -124,49 +124,75 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
     
     <div class="lg:px-8">
         <h1 class="text-center text-3xl text-white font-bold mb-8">Member List</h1>
+
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+            <!-- Per Page Dropdown -->
+            <form method="GET" action="{{ route('home') }}" class="flex items-center gap-2 text-sm font-medium">
+                <label for="perPage" class="text-white font-medium">Show</label>
+                <select name="perPage" id="perPage" onchange="this.form.submit()" class="px-2 py-1 w-[60px] rounded">
+                    <option value="3" {{ request('perPage') == 3 ? 'selected' : '' }}>3</option>
+                    <option value="5" {{ request('perPage') == 5 ? 'selected' : '' }}>5</option>
+                    <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="15" {{ request('perPage') == 15 ? 'selected' : '' }}>15</option>
+                </select>
+                <span class="text-white">entries</span>
+            </form>
+
+            <!-- Search Input -->
+            <form method="GET" class="flex items-center w-full sm:w-64 relative">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search Here"
+                    class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 pl-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm">
+                <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+
         <div
-            class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
+            class="scrollbar-hide relative flex flex-col w-full h-full overflow-scroll  bg-white shadow-md bg-clip-border rounded-xl">
             <table class="w-full text-left table-auto min-w-max">
-                <thead>
+                <thead class="bg-tableHead text-white font-bold">
                 <tr>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 bg-tableHead">
+                    <p class="block font-sans text-sm antialiased  leading-none ">
                         No
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none ">
                         Certified Date
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none ">
                         Company
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none ">
                         POS Brand
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none ">
                         Model
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none  ">
                         Country
                     </p>
                     </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"></p>
+                    <th class="p-4 border-b border-blue-gray-100 ">
+                    <p class="block font-sans text-sm antialiased  leading-none  "></p>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($members as $member)
-                    <tr class="even:bg-blue-gray-50/50">
+                    <tr class="even:bg-grayLight odd:bg-grayDark text-gray-100" >
                         <td class="p-4">
                             <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                 {{ $member->id }}
@@ -197,18 +223,23 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                                 {{ $member->country }}
                             </p>
                         </td>
+                        <td class="p-4">
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                            </p>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             </div>
             <!-- Pagination Links -->
-            <div class="mt-4">
-                {{ $members->links('pagination::tailwind') }}
-            </div>
+            @if($members->total() > $members->perPage() || $members->total() > 0)
+                <div class="mt-4 pagination-light">
+                    {{ $members->links('pagination::custom') }}
+                </div>
+            @endif
+        </div>
     
-    </div>
-    
-</section
+</section>
 @endif
 </x-app-layout>

@@ -25,7 +25,10 @@ export default {
                 subBannerBg: "#797497",
                 bgViolet: "#29205b",
                 infoCardBg: "#777295B3",
-            }
+                tableHead: "#a89cee", 
+                grayDark:"#46484b",
+                grayLight:"#757b83"
+            },
         },
     },
 

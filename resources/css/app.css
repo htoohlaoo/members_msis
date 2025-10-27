@@ -61,5 +61,14 @@
 }
 
 .girl-bg {
-    background: url("/images/logo.png")
+    background: url("/images/logo.png");
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Edge */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
