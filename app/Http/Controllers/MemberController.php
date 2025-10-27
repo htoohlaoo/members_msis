@@ -75,4 +75,9 @@ class MemberController extends Controller
                 ->with('error', 'Something went wrong. Please try again later.');
         }
     }
+
+    public function create(Request $request)
+    {
+        return view('members.create');
+    }
 }

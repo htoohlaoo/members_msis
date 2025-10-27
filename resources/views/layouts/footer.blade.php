@@ -1,5 +1,5 @@
 <!-- Footer -->
-    <footer class="bg-indigo-900 text-white mt-4">
+    <footer class="bg-indigo-900 text-white">
     <div class="container mx-auto px-6 py-12">
         
         <div class="lg:grid lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">

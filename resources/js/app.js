@@ -19,5 +19,6 @@ Alpine.data('menu', () => ({
 }));
 
 window.posSelector = posSelector;
+Alpine.data('posSelector', posSelector);
  
 Alpine.start()

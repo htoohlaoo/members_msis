@@ -124,7 +124,7 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
     
     <div class="lg:px-8">
         <h1 class="text-center text-3xl text-white font-bold mb-8">Member List</h1>
-        <form method="GET" action="{{ route('home') }}">
+        <form method="GET" action="{{ route('home') }}" class="hidden sm:flex">
             <div class="flex flex-col sm:flex-row items-center mb-4 gap-4 w-full">
                 <!-- Left side: Per Page -->
                 <div class="flex items-center gap-2 text-sm font-medium">
@@ -164,10 +164,43 @@ Amet, consectetua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la
                 </div>
             </div>
         </form>
+        <div class="flex flex-col sm:hidden px-4">
+            @foreach($members->take(20) as $member)
+                <div class="rounded-lg p-4 mb-4">
+                    <div class="flex justify-between mb-2">
+                        <div class="text-gray-200 font-medium">No</div>
+                        <div class="text-white font-bold">{{ $member->id }}</div>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <div class="text-gray-200 font-medium">Certified Date</div>
+                        <div class="text-white font-bold">{{ $member->created_at->format('d/m/Y') }}</div>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <div class="text-gray-200 font-medium">Company</div>
+                        <div class="text-white font-bold">{{ $member->user->name }}</div>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <div class="text-gray-200 font-medium">POS Brand</div>
+                        <div class="text-white font-bold">{{ $member->brand }}</div>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <div class="text-gray-200 font-medium">Model</div>
+                        <div class="text-white font-bold">{{ $member->model }}</div>
+                    </div>
+                    <div class="flex justify-between">
+                        <div class="text-gray-200 font-medium">Country</div>
+                        <div class="text-white font-bold">{{ $member->country }}</div>
+                    </div>
+                </div>
+                @if (!$loop->last)
+                    <hr class="border-gray-200 w-[60%] mx-auto">
+                @endif
+            @endforeach
+        </div>
 
 
         <div
-            class="scrollbar-hide relative flex flex-col w-full h-full overflow-scroll  bg-white shadow-md bg-clip-border rounded-xl">
+            class="scrollbar-hide relative flex flex-col w-full h-full overflow-scroll bg-white shadow-md bg-clip-border rounded-xl hidden sm:flex">
             <table class="w-full text-left table-auto min-w-max">
                 <thead class="bg-tableHead text-white font-bold">
                 <tr>

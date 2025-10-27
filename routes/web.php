@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MemberController::class, 'index'])->name('home');
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified','role:user'])->name('dashboard');
@@ -19,7 +21,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/membership/subscribe', [MemberController::class, 'subscribe'])->name('membership.subscribe');
+    Route::get('/member', [MemberController::class, 'create'])->name('members.create');
+    Route::post('/member', [MemberController::class, 'subscribe'])->name('members.subscribe');
 });
 
 require __DIR__.'/auth.php';
