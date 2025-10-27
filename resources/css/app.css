@@ -4,19 +4,17 @@
 
 
 :root {
-    --color-navBlue1: #1e40af;
-    --color-navBlue2: #3b82f6;
-    --color-navBlue3: #60a5fa;
-    --color-navBlue4: #93c5fd;
-    --color-bgViolet: #3c124e;
+    --color-navBlue1: #95b8e7;
+    --color-navBlue2: #88ade1;
+    --color-bgViolet: #171040;
 }
 .nav-gradient {
     background: linear-gradient(
         to right,
         var(--color-navBlue1),
         var(--color-navBlue2),
-        var(--color-navBlue3),
-        var(--color-navBlue4)
+        var(--color-navBlue1),
+        var(--color-navBlue2)
     );
     color: white; 
     padding: 1rem;

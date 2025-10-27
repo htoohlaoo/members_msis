@@ -62,7 +62,7 @@
         >
             <ul class="flex flex-col md:flex-row space-x-6 text-sm md:text-base font-medium">
                 <li>
-                    <a href="#" class="relative py-3 inline-flex items-center whitespace-nowrap group">
+                    <a href="/" class="relative py-3 inline-flex items-center whitespace-nowrap group">
                         <span class="relative">
                             Home
                             <span class="absolute left-0 bottom-0 w-1/2 border-b-2 border-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
@@ -81,12 +81,9 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
-                        x-show="open"
-                        x-transition
-                    >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service1</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service2</a></li>
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5">
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Service1</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Service2</a></li>
                     </ul>
 
                     <!-- Mobile dropdown (click) -->
@@ -95,8 +92,8 @@
                         @click.away="open = false"
                         class="md:hidden text-white rounded mt-1 text-sm"
                     >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service1</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Service2</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Service1</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Service2</a></li>
                     </ul>
                 </li>
 
@@ -111,12 +108,9 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
-                        x-show="open"
-                        x-transition
-                    >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo1</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo2</a></li>
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5">
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Promo1</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Promo2</a></li>
                     </ul>
 
                     <!-- Mobile dropdown (click) -->
@@ -125,8 +119,8 @@
                         @click.away="open = false"
                         class="md:hidden text-white rounded mt-1 text-sm"
                     >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo1</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Promo2</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Promo1</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Promo2</a></li>
                     </ul>
                 </li>
                 <li class="relative group" x-data="{ open: false }">
@@ -140,12 +134,9 @@
                     </a>
 
                     <!-- Desktop dropdown (hover) -->
-                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5"
-                        x-show="open"
-                        x-transition
-                    >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Team</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
+                    <ul class="absolute left-0 top-full hidden md:group-hover:block bg-indigo-600 rounded shadow-lg text-white text-sm mt-0.5">
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Team</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
                     </ul>
 
                     <!-- Mobile dropdown (click) -->
@@ -154,13 +145,13 @@
                         @click.away="open = false"
                         class="md:hidden text-white rounded mt-1 text-sm"
                     >
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Team</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Team</a></li>
+                        <li><a href="/" class="block px-4 py-2 hover:bg-indigo-500">Company</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#" class="relative py-3 inline-flex items-center whitespace-nowrap group">
+                    <a href="/" class="relative py-3 inline-flex items-center whitespace-nowrap group">
                         <span class="relative">
                             FAQs
                             <span class="absolute left-0 bottom-0 w-1/2 border-b-2 border-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
@@ -168,7 +159,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="relative py-3 inline-flex items-center whitespace-nowrap group">
+                    <a href="/" class="relative py-3 inline-flex items-center whitespace-nowrap group">
                         <span class="relative">
                             Careers
                             <span class="absolute left-0 bottom-0 w-1/2 border-b-2 border-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>

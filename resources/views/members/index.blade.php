@@ -89,8 +89,8 @@
 </section>
 <section class="gradient-section lg:py-12 m-0">
     <div class="lg:px-8">
-        <div class="w-full h-[400px] lg:h-[500px] relative">
-            <image src="{{ asset('images/girl_character.svg') }}" alt="Indicator" class="inline-block ml-2 w-[600px] lg:w-[120%] h-[100%] -translate-x-[5%] lg:-translate-x-[15%]">
+        <div class="w-full h-[500px] lg:h-[800px] relative">
+            <image src="{{ asset('images/girl_character.svg') }}" alt="Indicator" class="inline-block ml-2 w-[600px] lg:w-[120%] h-[100%] -translate-x-[5%] lg:-translate-x-[5%] object-cover">
             <div class="absolute inset-0 top-[30%] left-[40%] text-white text-left text-lg lg:text-4xl font-bold">
                 ❝Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim❞ 
             </div>
