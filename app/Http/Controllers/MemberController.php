@@ -12,17 +12,32 @@ use App\Models\Membership;
 class MemberController extends Controller
 {
     //
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+        if (auth()->check()) {
+            $perPage = $request->input('perPage', 10);
+            $search = $request->input('search');
 
-        if(auth()->check()) {
-        $perPage = $request->input('perPage', 10);
-        $members = Membership::where('status', 'active')->paginate($perPage);
+            $members = Membership::where('status', 'active')
+                ->when($search, function ($query, $search) {
+                    $query->where('brand', 'like', "%{$search}%")
+                        ->orWhere('country', 'like', "%{$search}%")
+                        ->orWhereHas('user', function ($q) use ($search) {
+                            $q->where('name', 'like', "%{$search}%")
+                                ->orWhere('email', 'like', "%{$search}%");
+                        });
+                })
+                ->paginate($perPage)
+                ->appends([
+                    'perPage' => $perPage,
+                    'search' => $search
+                ]);
         } else {
             // Empty paginator for guests
+            $perPage = $request->input('perPage', 10);
             $members = Membership::whereRaw('1 = 0')->paginate($perPage);
         }
-        
-        // Pass memberships to the view
+
         return view('members.index', compact('members'));
     }
 
